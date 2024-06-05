@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model district {
+  name          String          @id
+  realCase      realCase[]
+  predictedCase predictedCase[]
+}
+
+model realCase {
+  id Int @id @default(autoincrement())
+
+  year  Int
+  month Int
+
+  latitude  Int?
+  longitude Int?
+
+  district     district? @relation(fields: [districtName], references: [name], onDelete: Cascade)
+  districtName String?
+}
+
+model predictedCase {
+  id Int @id @default(autoincrement())
+
+  year  Int
+  month Int
+
+  value Int
+
+  district     district @relation(fields: [districtName], references: [name], onDelete: Cascade)
+  districtName String
+}
+
+model mosquito {
+  id                 Int                  @id @default(autoincrement())
+  name               String
+  inspectionMosquito inspectionMosquito[]
+}
+
+model inspectionMosquito {
+  id       Int @id @default(autoincrement())
+  quantity Int @default(1)
+  gender   Int @default(1)
+
+  inspection   inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+  inspectionId Int
+
+  mosquito   mosquito @relation(fields: [mosquitoId], references: [id], onDelete: Cascade)
+  mosquitoId Int
+}
+
+model virus {
+  id              Int               @id @default(autoincrement())
+  name            String
+  inspectionVirus inspectionVirus[]
+}
+
+model trap {
+  id         Int          @id @default(autoincrement())
+  latitude   String
+  longitude  String
+  inspection inspection[]
+}
+
+model inspectionVirus {
+  id       Int @id @default(autoincrement())
+  quantity Int @default(1)
+
+  inspectionId Int
+  inspection   inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+
+  virusId Int
+  virus   virus @relation(fields: [virusId], references: [id], onDelete: Cascade)
+}
+
+model inspection {
+  id                 Int                  @id @default(autoincrement())
+  year               Int
+  week               Int
+  region_id          Int
+  inspectionMosquito inspectionMosquito[]
+  inspectionVirus    inspectionVirus[]
+
+  trap   trap @relation(fields: [trapId], references: [id])
+  trapId Int
+}
