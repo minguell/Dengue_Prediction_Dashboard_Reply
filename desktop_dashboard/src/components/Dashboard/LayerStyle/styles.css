@@ -1,0 +1,21 @@
+.layerStyleContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    padding-left: 20px;
+    margin: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+}
+
+.layerButton {
+    width: 80px;
+}
+
+.layerImg {
+    width: 100%;
+}

@@ -1,0 +1,14 @@
+.loading {
+    position: relative;
+    top: 50vh;
+    left: 34vw;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}

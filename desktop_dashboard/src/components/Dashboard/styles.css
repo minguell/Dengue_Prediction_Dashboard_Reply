@@ -1,0 +1,73 @@
+.dashboard-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.header {
+    background: #DB4437;
+    width: 100%;
+}
+
+.body {
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 10px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.hintBox {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    color: rgba(119, 119, 119, 0.7);
+    margin: 20px;
+    text-align: center;
+    font-size: small;
+}
+
+.listItem {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.polyItem {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 14px;
+    margin-left: 50px;
+}
+
+.valueContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2px;
+}
+
+
